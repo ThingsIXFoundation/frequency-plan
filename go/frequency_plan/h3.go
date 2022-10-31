@@ -23,6 +23,7 @@ import (
 	"fmt"
 	"io"
 	"io/fs"
+	"log"
 
 	"github.com/uber/h3-go/v4"
 )
@@ -32,7 +33,10 @@ var h3index embed.FS
 var h3cache map[BandName][]h3.Cell = make(map[BandName][]h3.Cell)
 
 func init() {
-	makeH3Cache()
+	err := makeH3Cache()
+	if err != nil {
+		log.Fatal("could not load frequency_plan h3 cache")
+	}
 }
 
 func IsValidBandForHex(band BandName, hex h3.Cell) (bool, error) {
