@@ -1,4 +1,4 @@
-module github.com/ThingsIXFoundation/frequency-plan/go
+module github.com/ThingsIXFoundation/frequency-plan
 
 go 1.19
 
