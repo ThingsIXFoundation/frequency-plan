@@ -25,12 +25,12 @@ import (
 	"io/fs"
 	"log"
 
-	"github.com/uber/h3-go/v4"
+	h3light "github.com/ThingsIXFoundation/h3-light"
 )
 
 //go:embed *.h3
 var h3index embed.FS
-var h3cache map[BandName][]h3.Cell = make(map[BandName][]h3.Cell)
+var h3cache map[BandName][]h3light.Cell = make(map[BandName][]h3light.Cell)
 
 func init() {
 	err := makeH3Cache()
@@ -39,7 +39,7 @@ func init() {
 	}
 }
 
-func IsValidBandForHex(band BandName, hex h3.Cell) (bool, error) {
+func IsValidBandForHex(band BandName, hex h3light.Cell) (bool, error) {
 	// To check if the band is valid for a certain hex we have to check
 	// the hex is contained in the band h3 index. However since the
 	// h3index is compacted we also have to downscale the hex to the same
@@ -75,7 +75,7 @@ func makeH3Cache() error {
 				return err
 			}
 
-			h3cache[band] = append(h3cache[band], h3.Cell(cell))
+			h3cache[band] = append(h3cache[band], h3light.Cell(cell))
 		}
 	}
 
