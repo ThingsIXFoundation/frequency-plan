@@ -3,12 +3,13 @@ module github.com/ThingsIXFoundation/frequency-plan
 go 1.19
 
 require (
+	github.com/ThingsIXFoundation/h3-light v0.0.0-20221122151216-69018e780344
 	github.com/biter777/countries v1.5.6
 	github.com/brocaar/lorawan v0.0.0-20220715134808-3b283dda1534
 	github.com/sirupsen/logrus v1.9.0
 	github.com/stretchr/testify v1.8.0
-	github.com/tidwall/geojson v1.3.5
-	github.com/uber/h3-go/v4 v4.0.0
+	github.com/tidwall/geojson v1.4.3
+	github.com/uber/h3-go/v4 v4.0.1
 )
 
 require (

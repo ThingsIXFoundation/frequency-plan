@@ -1,4 +1,6 @@
 github.com/NickBall/go-aes-key-wrap v0.0.0-20170929221519-1c3aa3e4dfc5/go.mod h1:w5D10RxC0NmPYxmQ438CC1S07zaC1zpvuNW7s5sUk2Q=
+github.com/ThingsIXFoundation/h3-light v0.0.0-20221122151216-69018e780344 h1:faZwv4wbQEytMIyLJ7MV/mQEeGXDvQLGLw1o6Z+BOUc=
+github.com/ThingsIXFoundation/h3-light v0.0.0-20221122151216-69018e780344/go.mod h1:jSChfHi3fbZIAHTaPSEy+ghN/kF32U/f+NZdQt6oDD8=
 github.com/biter777/countries v1.5.6 h1:YdvI0OYZR4gmI8BO+LrAuKmoZgiv4RrMdGBj6iORfn8=
 github.com/biter777/countries v1.5.6/go.mod h1:1HSpZ526mYqKJcpT5Ti1kcGQ0L0SrXWIaptUWjFfv2E=
 github.com/brocaar/lorawan v0.0.0-20220715134808-3b283dda1534 h1:vqq/suBJc3KWCDOfJFEMx3t83cBdjldR5yLGps/3DWo=
@@ -74,8 +76,8 @@ github.com/tidwall/cities v0.1.0/go.mod h1:lV/HDp2gCcRcHJWqgt6Di54GiDrTZwh1aG2ZU
 github.com/tidwall/geoindex v1.4.4/go.mod h1:rvVVNEFfkJVWGUdEfU8QaoOg/9zFX0h9ofWzA60mz1I=
 github.com/tidwall/geoindex v1.6.2 h1:cWbqC9HFXMxc2p6KMWbs9VG6/gnrfC53EIPQEMcXO1g=
 github.com/tidwall/geoindex v1.6.2/go.mod h1:rvVVNEFfkJVWGUdEfU8QaoOg/9zFX0h9ofWzA60mz1I=
-github.com/tidwall/geojson v1.3.5 h1:7fg+XBI0Xx08fFDtggJIUBNGVL8ccey+klZN6keUETo=
-github.com/tidwall/geojson v1.3.5/go.mod h1:1cn3UWfSYCJOq53NZoQ9rirdw89+DM0vw+ZOAVvuReg=
+github.com/tidwall/geojson v1.4.3 h1:yae/k/DhJdc9psaTJQ3pNOdbol70eH+nCijy6O7TxBw=
+github.com/tidwall/geojson v1.4.3/go.mod h1:1cn3UWfSYCJOq53NZoQ9rirdw89+DM0vw+ZOAVvuReg=
 github.com/tidwall/gjson v1.12.1/go.mod h1:/wbyibRr2FHMks5tjHJ5F8dMZh3AcwJEMf5vlfC0lxk=
 github.com/tidwall/gjson v1.14.2/go.mod h1:/wbyibRr2FHMks5tjHJ5F8dMZh3AcwJEMf5vlfC0lxk=
 github.com/tidwall/gjson v1.14.3 h1:9jvXn7olKEHU1S9vwoMGliaT8jq1vJ7IH/n9zD9Dnlw=
@@ -92,8 +94,8 @@ github.com/tidwall/rtree v1.7.1/go.mod h1:39+jGCj9hYqhflezmsTBOlysIk09ytm+8EQsC/
 github.com/tidwall/sjson v1.2.4/go.mod h1:098SZ494YoMWPmMO6ct4dcFnqxwj9r/gF0Etp19pSNM=
 github.com/tidwall/sjson v1.2.5 h1:kLy8mja+1c9jlljvWTlSazM7cKDRfJuR/bOJhcY5NcY=
 github.com/tidwall/sjson v1.2.5/go.mod h1:Fvgq9kS/6ociJEDnK0Fk1cpYF4FIW6ZF7LAe+6jwd28=
-github.com/uber/h3-go/v4 v4.0.0 h1:cJyeFCwR/nFiwslcX3CC98e4KzGMB1ojsHl8yU5sGYU=
-github.com/uber/h3-go/v4 v4.0.0/go.mod h1:VDpXVn4NLetBoISLEbiTVNstwW00bhHolV8I+jx9G+4=
+github.com/uber/h3-go/v4 v4.0.1 h1:eOcQXs+eC9Vmil0ZWicPYwSVfgwkPlMyk6Udm/kdv8w=
+github.com/uber/h3-go/v4 v4.0.1/go.mod h1:VDpXVn4NLetBoISLEbiTVNstwW00bhHolV8I+jx9G+4=
 github.com/yuin/goldmark v1.2.1/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 go.opentelemetry.io/otel v0.20.0/go.mod h1:Y3ugLH2oa81t5QO+Lty+zXf8zC9L26ax4Nzoxm/dooo=
 go.opentelemetry.io/otel/metric v0.20.0/go.mod h1:598I5tYlH1vzBjn+BTuhzTCSb/9debfNp6R3s7Pr1eU=
