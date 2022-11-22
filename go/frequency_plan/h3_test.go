@@ -20,18 +20,18 @@ import (
 	"testing"
 
 	"github.com/ThingsIXFoundation/frequency-plan/go/frequency_plan"
+	h3light "github.com/ThingsIXFoundation/h3-light"
 	"github.com/stretchr/testify/assert"
-	"github.com/uber/h3-go/v4"
 )
 
 func TestIsValidBandForHex(t *testing.T) {
 
-	actual, _ := frequency_plan.IsValidBandForHex(frequency_plan.EU868, h3.Cell(h3.IndexFromString("8b1fa5db57b6fff")))
+	actual, _ := frequency_plan.IsValidBandForHex(frequency_plan.EU868, h3light.MustCellFromString("8b1fa5db57b6fff"))
 	expected := true
 
 	assert.Equal(t, expected, actual, "Eindhoven has EU868")
 
-	actual, _ = frequency_plan.IsValidBandForHex(frequency_plan.EU868, h3.Cell(h3.IndexFromString("8b2a10728bb1fff")))
+	actual, _ = frequency_plan.IsValidBandForHex(frequency_plan.EU868, h3light.MustCellFromString("8b2a10728bb1fff"))
 	expected = false
 
 	assert.Equal(t, expected, actual, "New York does not have EU868")
