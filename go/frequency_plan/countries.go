@@ -37,7 +37,6 @@ var CountryToPlan = map[countries.CountryCode]string{
 	countries.BG: "EU868",
 	countries.BI: "EU868",
 	countries.CV: "EU868",
-	countries.CK: "EU868",
 	countries.KM: "EU868",
 	countries.HR: "EU868",
 	countries.CY: "EU868",
@@ -133,4 +132,5 @@ var CountryToPlan = map[countries.CountryCode]string{
 	countries.CX: "AU915",
 	countries.CC: "AU915",
 	countries.TL: "AU915",
+	countries.TO: "AU915",
 }
