@@ -206,6 +206,57 @@ func GetBand(commonName string) (band.Band, error) {
 		}
 
 		return b, nil
+	case string(AU915):
+		b, err := band.GetConfig(band.AU915, false, lorawan.DwellTime400ms)
+		if err != nil {
+			return nil, err
+		}
+		err = b.AddChannel(916800000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(917000000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(917200000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(917400000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(917600000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(917800000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(918000000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(918200000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(917500000, 6, 6)
+		if err != nil {
+			return nil, err
+		}
+
+		return b, nil	
 	default:
 		return nil, fmt.Errorf("%s is not yet supported", commonName)
 	}
