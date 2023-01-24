@@ -127,6 +127,10 @@ func (b BandName) ToBlockchain() BlockchainFrequencyPlan {
 	}
 }
 
+func (b BandName) MarshalText() ([]byte, error) {
+	return []byte(b), nil
+}
+
 func (b *BandName) UnmarshalText(text []byte) error {
 	switch strings.ToUpper(string(text)) {
 	case string(EU868):
@@ -256,7 +260,7 @@ func GetBand(commonName string) (band.Band, error) {
 			return nil, err
 		}
 
-		return b, nil	
+		return b, nil
 	default:
 		return nil, fmt.Errorf("%s is not yet supported", commonName)
 	}
