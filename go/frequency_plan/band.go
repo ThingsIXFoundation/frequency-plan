@@ -209,6 +209,16 @@ func GetBand(commonName string) (band.Band, error) {
 			return nil, err
 		}
 
+		err = b.AddChannel(868300000, 6, 6)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(868800000, 7, 7)
+		if err != nil {
+			return nil, err
+		}
+
 		return b, nil
 	case string(AU915):
 		b, err := band.GetConfig(band.AU915, false, lorawan.DwellTime400ms)
