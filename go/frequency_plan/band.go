@@ -22,6 +22,7 @@ import (
 
 	"github.com/brocaar/lorawan"
 	"github.com/brocaar/lorawan/band"
+	"golang.org/x/exp/slices"
 )
 
 type BandName string
@@ -49,7 +50,23 @@ var AllBands []BandName = []BandName{
 	EU868,
 	US915,
 	CN779,
+	EU433,
 	AU915,
+	CN470,
+	AS923,
+	AS923_2,
+	AS923_3,
+	AS923_4,
+	//KR920,
+	//IN865,
+	RU864,
+}
+
+var SupportedBands []BandName = []BandName{
+	EU868,
+	US915,
+	AU915,
+	CN470,
 	AS923,
 	AS923_2,
 	AS923_3,
@@ -68,7 +85,7 @@ func FromBlockchain(in BlockchainFrequencyPlan) BandName {
 	case 2:
 		return US915
 	case 3:
-		return CN779
+		return CN470
 	case 4:
 		return EU433
 	case 5:
@@ -220,12 +237,139 @@ func GetBand(commonName string) (band.Band, error) {
 		}
 
 		return b, nil
+	case string(US915):
+		b, err := band.GetConfig(band.US915, false, lorawan.DwellTimeNoLimit)
+		if err != nil {
+			return nil, err
+		}
+
+		enabled := []int{8, 9, 10, 11, 12, 13, 14, 15, 65}
+
+		for _, chIndex := range b.GetUplinkChannelIndices() {
+			if slices.Contains(enabled, chIndex) {
+				b.EnableUplinkChannelIndex(chIndex)
+			} else {
+				b.DisableUplinkChannelIndex(chIndex)
+			}
+		}
+		return b, nil
+	case string(CN470):
+		b, err := band.GetConfig(band.CN470, false, lorawan.DwellTimeNoLimit)
+		if err != nil {
+			return nil, err
+		}
+
+		enabled := []int{80, 81, 82, 83, 84, 85, 86, 87}
+
+		for _, chIndex := range b.GetUplinkChannelIndices() {
+			if slices.Contains(enabled, chIndex) {
+				b.EnableUplinkChannelIndex(chIndex)
+			} else {
+				b.DisableUplinkChannelIndex(chIndex)
+			}
+		}
+		return b, nil
 	case string(AU915):
 		b, err := band.GetConfig(band.AU915, false, lorawan.DwellTime400ms)
 		if err != nil {
 			return nil, err
 		}
-		err = b.AddChannel(916800000, 0, 5)
+
+		enabled := []int{8, 9, 10, 11, 12, 13, 14, 15, 65}
+
+		for _, chIndex := range b.GetUplinkChannelIndices() {
+			if slices.Contains(enabled, chIndex) {
+				b.EnableUplinkChannelIndex(chIndex)
+			} else {
+				b.DisableUplinkChannelIndex(chIndex)
+			}
+		}
+		return b, nil
+	case string(AS923):
+		b, err := band.GetConfig("AS923", false, lorawan.DwellTimeNoLimit)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(922200000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(922400000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(922600000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(922800000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(923000000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(922000000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(922100000, 6, 6)
+		if err != nil {
+			return nil, err
+		}
+
+		return b, nil
+	case string(AS923_2):
+		b, err := band.GetConfig("AS923-2", false, lorawan.DwellTimeNoLimit)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(921800000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(922000000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(922200000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(922400000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(922600000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(922800000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(921400000, 6, 6)
+		if err != nil {
+			return nil, err
+		}
+		return b, nil
+	case string(AS923_3):
+		b, err := band.GetConfig("AS923-3", false, lorawan.DwellTimeNoLimit)
 		if err != nil {
 			return nil, err
 		}
@@ -260,12 +404,96 @@ func GetBand(commonName string) (band.Band, error) {
 			return nil, err
 		}
 
-		err = b.AddChannel(918200000, 0, 5)
+		err = b.AddChannel(916600000, 6, 6)
 		if err != nil {
 			return nil, err
 		}
 
-		err = b.AddChannel(917500000, 6, 6)
+		return b, nil
+	case string(AS923_4):
+		b, err := band.GetConfig("AS923-4", false, lorawan.DwellTimeNoLimit)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(917700000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(917900000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(918100000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(918300000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(918500000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(918700000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(917300000, 6, 6)
+		if err != nil {
+			return nil, err
+		}
+
+		return b, nil
+	case string(RU864):
+		b, err := band.GetConfig(band.RU864, false, lorawan.DwellTimeNoLimit)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(869300000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(867300000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(867500000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(867700000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(867900000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(868100000, 0, 5)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(868900000, 6, 6)
+		if err != nil {
+			return nil, err
+		}
+
+		err = b.AddChannel(868900000, 7, 7)
 		if err != nil {
 			return nil, err
 		}
