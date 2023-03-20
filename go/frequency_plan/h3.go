@@ -39,18 +39,18 @@ func init() {
 	}
 }
 
-func IsValidBandForHex(band BandName, hex h3light.Cell) (bool, error) {
+func IsValidBandForHex(band BandName, hex h3light.Cell) bool {
 	// To check if the band is valid for a certain hex we have to check
 	// the hex is contained in the band h3 index. However since the
 	// h3index is compacted we also have to downscale the hex to the same
 	// resolution
 	for _, bandCell := range h3cache[band] {
 		if hex.Parent(bandCell.Resolution()) == bandCell {
-			return true, nil
+			return true
 		}
 	}
 
-	return false, nil
+	return false
 }
 
 func makeH3Cache() error {

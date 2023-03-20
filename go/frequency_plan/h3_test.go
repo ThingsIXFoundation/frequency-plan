@@ -26,12 +26,12 @@ import (
 
 func TestIsValidBandForHex(t *testing.T) {
 
-	actual, _ := frequency_plan.IsValidBandForHex(frequency_plan.EU868, h3light.MustCellFromString("8b1fa5db57b6fff"))
+	actual := frequency_plan.IsValidBandForHex(frequency_plan.EU868, h3light.MustCellFromString("8b1fa5db57b6fff"))
 	expected := true
 
 	assert.Equal(t, expected, actual, "Eindhoven has EU868")
 
-	actual, _ = frequency_plan.IsValidBandForHex(frequency_plan.EU868, h3light.MustCellFromString("8b2a10728bb1fff"))
+	actual = frequency_plan.IsValidBandForHex(frequency_plan.EU868, h3light.MustCellFromString("8b2a10728bb1fff"))
 	expected = false
 
 	assert.Equal(t, expected, actual, "New York does not have EU868")

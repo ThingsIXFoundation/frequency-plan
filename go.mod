@@ -15,6 +15,8 @@ require (
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/gammazero/deque v0.2.0 // indirect
+	github.com/gammazero/workerpool v1.1.3 // indirect
 	github.com/jacobsa/crypto v0.0.0-20190317225127-9f44e2d11115 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect

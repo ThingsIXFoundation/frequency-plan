@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	eu868band, err := frequency_plan.GetBand(string(frequency_plan.EU868))
+	eu868band, err := frequency_plan.GetBand(string(frequency_plan.AU915))
 	if err != nil {
 		logrus.Fatal(err)
 	}

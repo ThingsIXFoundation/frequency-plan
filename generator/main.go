@@ -144,6 +144,20 @@ func writeH3IndexFiles(frequencyHex map[string][]h3.Cell) {
 	}
 }
 
+func writeH3GeojsonFiles(frequencyHex map[string][]h3.Cell) {
+	for frequencyPlan, index := range frequencyHex {
+		filename := fmt.Sprintf("../go/frequency_plan/%s.geojson", frequencyPlan)
+		f, err := os.Create(filename)
+		if err != nil {
+			logrus.WithError(err).Fatalf("could not open file: %s", filename)
+		}
+
+		geoj := h3tools.H3CellsToMultiPolygon(index)
+
+		f.Write([]byte(geoj.JSON()))
+	}
+}
+
 func generateH3Index() {
 	wp := workerpool.New(runtime.NumCPU())
 	logrus.Infof("running h3 index generator using %d workers", runtime.NumCPU())
@@ -196,8 +210,6 @@ func generateH3Index() {
 				}
 			}
 
-			logrus.Infof("compacting for %s", country)
-			cells = h3tools.DebupAndCompactCells(cells)
 			logrus.Infof("adding for %s", country)
 			frequencyHexMutex.Lock()
 			frequencyHex[plan] = append(frequencyHex[plan], cells...)
@@ -208,6 +220,10 @@ func generateH3Index() {
 
 	// Wait for all workers to complete
 	wp.StopWait()
+
+	for plan, _ := range frequencyHex {
+		frequencyHex[plan] = h3tools.DebupAndCompactCells(frequencyHex[plan])
+	}
 
 	writeH3IndexFiles(frequencyHex)
 
