@@ -84,4 +84,7 @@ var EEZToCountry = map[string]countries.CountryCode{
 	"8385.0":  countries.France,
 	"8384.0":  countries.France,
 	"8396.0":  countries.SouthAfrica,
+	"8466.0":  countries.Argentina,
+	"8464.0":  countries.Brazil,
+	"8465.0":  countries.Chile,
 }

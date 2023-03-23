@@ -134,4 +134,7 @@ var CountryToPlan = map[countries.CountryCode]string{
 	countries.CocosIslands:                  "AU915",
 	countries.TimorLeste:                    "AU915",
 	countries.Tonga:                         "AU915",
+	countries.Argentina:                     "AU915",
+	countries.Brazil:                        "AU915",
+	countries.Chile:                         "AU915",
 }
